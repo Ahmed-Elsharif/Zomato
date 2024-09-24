@@ -1,0 +1,17 @@
+<<<<<<< HEAD
+streamlit
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+plotly
+=======
+streamlit
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+plotly
+>>>>>>> e3ff950820b28661eb065ae7190c05892f9f308f
