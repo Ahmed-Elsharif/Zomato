@@ -3,13 +3,22 @@ import pandas as pd
 import pickle
 import numpy as np
 
-model_path = './pipeline_model.pkl'
-csv_path = './df_encoded.csv'
+# Load the pipeline model using `st.cache_resource`
+@st.cache_resource
+def load_model():
+    # Use the relative path to the model file
+    with open("pipeline_model.pkl", "rb") as file:
+        model = pickle.load(file)
+    return model
 
-with open(model_path, 'rb') as f:
-    model = pickle.load(f)
-
-df = pd.read_csv(csv_path)
+# Load the dataset structure (without data) using `st.cache_data`
+@st.cache_data
+def load_data():
+    # Use the relative path to the CSV file
+    df = pd.read_csv("df_encoded.csv")
+    if 'Unnamed: 0' in df.columns:
+        df = df.drop(columns=['Unnamed: 0'])  # Drop the unwanted index column if necessary
+    return df
 
 # Function to initialize the input dictionary based on the dataset structure
 def initialize_input(df):
