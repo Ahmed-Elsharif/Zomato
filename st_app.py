@@ -6,14 +6,14 @@ import numpy as np
 # Load the pipeline model using `st.cache_resource`
 @st.cache_resource
 def load_model():
-    with open("E:\Epsilon\Training Internship\Project_1_Zomato/pipeline_model.pkl", "rb") as file:
+    with open("./pipeline_model.pkl", "rb") as file:
         model = pickle.load(file)
     return model
 
 # Load the dataset structure (without data) using `st.cache_data`
 @st.cache_data
 def load_data():
-    df = pd.read_csv("E:/Epsilon/Training Internship/Project_1_Zomato/df_encoded.csv")
+    df = pd.read_csv("./df_encoded.csv")
     if 'Unnamed: 0' in df.columns:
         df = df.drop(columns=['Unnamed: 0'])  # Drop the unwanted index column
     return df
